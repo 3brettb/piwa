@@ -1,82 +1,138 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version  v1.0.0
+ * @link  http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license  MIT
+ -->
 <!DOCTYPE html>
-<html lang="<?php echo e(app()->getLocale()); ?>">
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="PIWA - Project and Issue Management Web Application">
+    <meta name="author" content="Brett Brist">
+    <meta name="keyword" content="Project,Project Management,Issue,Issue Tracking,PIWA,Project Issue,Project Issue Web App">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <title>PIWA - Project Management</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <!-- Icons -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
-
-    <!-- Styles -->
-    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="css/coreui.css" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<!-- BODY options, add following classes to body to change options
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        <?php echo e(config('app.name', 'Laravel')); ?>
+// Header options
+1. '.header-fixed'					- Fixed Header
 
-                    </a>
-                </div>
+// Brand options
+1. '.brand-minimized'       - Minimized brand (Only symbol)
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+// Sidebar options
+1. '.sidebar-fixed'					- Fixed Sidebar
+2. '.sidebar-hidden'				- Hidden Sidebar
+3. '.sidebar-off-canvas'		- Off Canvas Sidebar
+4. '.sidebar-minimized'			- Minimized Sidebar (Only icons)
+5. '.sidebar-compact'			  - Compact Sidebar
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        <?php if(auth()->guard()->guest()): ?>
-                            <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
-                            <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
-                        <?php else: ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
-                                </a>
+// Aside options
+1. '.aside-menu-fixed'			- Fixed Aside Menu
+2. '.aside-menu-hidden'			- Hidden Aside Menu
+3. '.aside-menu-off-canvas'	- Off Canvas Aside Menu
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="<?php echo e(route('logout')); ?>"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+// Breadcrumb options
+1. '.breadcrumb-fixed'			- Fixed Breadcrumb
 
-                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                            <?php echo e(csrf_field()); ?>
+// Footer options
+1. '.footer-fixed'					- Fixed footer
 
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
+-->
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+    <header class="app-header navbar">
+        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">☰</button>
+
+        <!-- Top Nav Bar -->
+        <!-- <?php echo $__env->make('menus.top', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> -->
+
+        <!-- User Nav - Top Right -->
+        <?php echo $__env->make('menus.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!-- Right Side Panel Toggle Button -->
+        <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
+
+    </header>
+
+    <div class="app-body">
+        
+        <!-- Left Sidebar -->
+        <?php echo $__env->make('menus.left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!-- Main content -->
+        <main class="main">
+
+            <!-- Breadcrumb Banner -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Home</li>
+                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+
+                <!-- Breadcrumb Menu Banner-->
+                <!--<?php echo $__env->make('menus.banner', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>-->
+
+            </ol>
+
+
+            <div class="container-fluid">
+                <div class="animated fadeIn">
+                    
+                    <?php echo $__env->yieldContent('content'); ?>
+                
+                </div>  
             </div>
-        </nav>
+            <!-- /.conainer-fluid -->
+        </main>
 
-        <?php echo $__env->yieldContent('content'); ?>
+        <!-- Right Slide-In Menu Panel -->
+        <?php echo $__env->make('menus.right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
     </div>
 
-    <!-- Scripts -->
-    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <footer class="app-footer">
+        <a href="http://brettbrist.blackfiddle.net">Brett Brist</a> © 2017 blackfiddle.net
+        <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a>, <a href="http://laravel.com">Laravel</a>
+        </span>
+    </footer>
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendors/pace-progress/pace.min.js"></script>
+
+
+    <!-- Plugins and scripts required by all views -->
+    <script src="vendors/chart.js/dist/Chart.min.js"></script>
+
+
+    <!-- GenesisUI main scripts -->
+
+    <script src="js/coreui.js"></script>
+
+
+    <!-- Plugins and scripts required by this views -->
+
+    <!-- Custom scripts required by this view -->
+    <script src="js/views/main.js"></script>
+
 </body>
+
 </html>

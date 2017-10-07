@@ -10,15 +10,29 @@
                         <?php echo e(csrf_field()); ?>
 
 
-                        <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        <div class="form-group<?php echo e($errors->has('firstname') ? ' has-error' : ''); ?>">
+                            <label for="firstname" class="col-md-4 control-label">Firstname</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="<?php echo e(old('name')); ?>" required autofocus>
+                                <input id="firstname" type="text" class="form-control" name="firstname" value="<?php echo e(old('firstname')); ?>" required autofocus>
 
-                                <?php if($errors->has('name')): ?>
+                                <?php if($errors->has('firstname')): ?>
                                     <span class="help-block">
-                                        <strong><?php echo e($errors->first('name')); ?></strong>
+                                        <strong><?php echo e($errors->first('firstname')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('lastname') ? ' has-error' : ''); ?>">
+                            <label for="lastname" class="col-md-4 control-label">Lastname</label>
+
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control" name="lastname" value="<?php echo e(old('lastname')); ?>" required autofocus>
+
+                                <?php if($errors->has('lastname')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('lastname')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
