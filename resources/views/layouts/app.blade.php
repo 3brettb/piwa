@@ -24,6 +24,7 @@
 
     <!-- Main styles for this application -->
     <link href="css/coreui.css" rel="stylesheet">
+    <link href="css/piwa.css" rel="stylesheet">
 </head>
 
 <!-- BODY options, add following classes to body to change options
@@ -54,36 +55,48 @@
 
 -->
 
+@auth
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+@else
+<body class="app header-fixed">
+@endauth
     <header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">☰</button>
+        @auth
+            <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">☰</button>
+        @endauth
 
         <!-- Top Nav Bar -->
         <!-- @include('menus.top') -->
 
         <!-- User Nav - Top Right -->
-        @include('menus.user')
+        @guest
+            @include('menus.guest')
+        @else
+            @include('menus.user')
+        @endguest   
 
-        <!-- Right Side Panel Toggle Button -->
-        <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
+        @auth
+            <!-- Right Side Panel Toggle Button -->
+            <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
+        @endauth
 
     </header>
 
     <div class="app-body">
         
-        <!-- Left Sidebar -->
-        @include('menus.left')
+        @auth
+            <!-- Left Sidebar -->
+            @include('menus.left')
+        @endauth
 
         <!-- Main content -->
         <main class="main">
 
             <!-- Breadcrumb Banner -->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                @yield('breadcrumb')
 
                 <!-- Breadcrumb Menu Banner-->
                 <!--@include('menus.banner')-->
@@ -101,8 +114,10 @@
             <!-- /.conainer-fluid -->
         </main>
 
-        <!-- Right Slide-In Menu Panel -->
-        @include('menus.right')
+        @auth
+            <!-- Right Slide-In Menu Panel -->
+            @include('menus.right')
+        @endauth
 
     </div>
 

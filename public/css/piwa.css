@@ -1,0 +1,15 @@
+.help-block {
+    color: red;
+}
+
+.nav-text {
+    font-size: 12px;
+}
+
+.nav-indent {
+    padding-left: 25px;
+}
+
+.sidebar-minimized .nav-text {
+    display: none;
+}

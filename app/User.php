@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Activity;
 use App\Models\Comment;
 use App\Models\Project;
+use App\Models\ProjectUser;
 
 class User extends Authenticatable
 {
@@ -52,22 +53,15 @@ class User extends Authenticatable
     {
         return $this->firstname . " " . $this->lastname;
     }
-
-    public function getProjectsAttribute()
-    {
-        $mine = $this->owned_projects();
-        $other = $this->member_projects();
-        return $mine->merge($other);
-    }
     
     public function owned_projects()
     {
         return $this->hasMany(Project::class);
     }
 
-    public function member_projects()
+    public function projects()
     {
-        return $this->hasManyThrough(Project::class, ProjectUser::class);
+        return $this->hasManyThrough(Project::class, ProjectUser::class, 'project_id', 'id');
     }
 
 }

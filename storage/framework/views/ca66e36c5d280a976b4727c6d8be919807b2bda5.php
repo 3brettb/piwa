@@ -1,3 +1,8 @@
+<?php $__env->startSection('breadcrumb'); ?>
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Dashboard</li>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">

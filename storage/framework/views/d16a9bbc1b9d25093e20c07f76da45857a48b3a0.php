@@ -1,92 +1,83 @@
+<?php $__env->startSection('breadcrumb'); ?>
+    <li class="breadcrumb-item">Create Account</li>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-4">
+                    <div class="card-body p-4">
+                        <h1>Register</h1>
+                        <p class="text-muted">Create your account</p>
+                        
+                        <form class="form-horizontal" method="POST" action="<?php echo e(route('register')); ?>">
+                            <?php echo e(csrf_field()); ?>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="<?php echo e(route('register')); ?>">
-                        <?php echo e(csrf_field()); ?>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input id="firstname" type="text" class="form-control" placeholder="First Name" name="firstname" value="<?php echo e(old('firstname')); ?>" required autofocus>
+                            </div>
 
-
-                        <div class="form-group<?php echo e($errors->has('firstname') ? ' has-error' : ''); ?>">
-                            <label for="firstname" class="col-md-4 control-label">Firstname</label>
-
-                            <div class="col-md-6">
-                                <input id="firstname" type="text" class="form-control" name="firstname" value="<?php echo e(old('firstname')); ?>" required autofocus>
-
+                            <div class="form-group<?php echo e($errors->has('firstname') ? ' has-error' : ''); ?>">
                                 <?php if($errors->has('firstname')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('firstname')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
 
-                        <div class="form-group<?php echo e($errors->has('lastname') ? ' has-error' : ''); ?>">
-                            <label for="lastname" class="col-md-4 control-label">Lastname</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input id="lastname" type="text" class="form-control" placeholder="Last Name" name="lastname" value="<?php echo e(old('lastname')); ?>" required>
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="<?php echo e(old('lastname')); ?>" required autofocus>
-
+                            <div class="form-group<?php echo e($errors->has('lastname') ? ' has-error' : ''); ?>">
                                 <?php if($errors->has('lastname')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('lastname')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
 
-                        <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon">@</span>
+                                <input id="email" type="email" class="form-control" placeholder="Email" name="email" value="<?php echo e(old('email')); ?>" required>
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" required>
-
+                            <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
                                 <?php if($errors->has('email')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('email')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
 
-                        <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
+                            <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                                 <?php if($errors->has('password')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="input-group mb-4">
+                                <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                <input id="password-confirm" type="password" class="form-control" placeholder="Repeat password" name="password_confirmation" required>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                            <button type="submit" class="btn btn-block btn-success">Create Account</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

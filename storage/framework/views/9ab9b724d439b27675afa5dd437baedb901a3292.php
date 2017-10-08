@@ -24,6 +24,7 @@
 
     <!-- Main styles for this application -->
     <link href="css/coreui.css" rel="stylesheet">
+    <link href="css/piwa.css" rel="stylesheet">
 </head>
 
 <!-- BODY options, add following classes to body to change options
@@ -54,36 +55,48 @@
 
 -->
 
+<?php if(auth()->guard()->check()): ?>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<?php else: ?>
+<body class="app header-fixed">
+<?php endif; ?>
     <header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">☰</button>
+        <?php if(auth()->guard()->check()): ?>
+            <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">☰</button>
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">☰</button>
+        <?php endif; ?>
 
         <!-- Top Nav Bar -->
         <!-- <?php echo $__env->make('menus.top', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> -->
 
         <!-- User Nav - Top Right -->
-        <?php echo $__env->make('menus.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php if(auth()->guard()->guest()): ?>
+            <?php echo $__env->make('menus.guest', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php else: ?>
+            <?php echo $__env->make('menus.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endif; ?>   
 
-        <!-- Right Side Panel Toggle Button -->
-        <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
+        <?php if(auth()->guard()->check()): ?>
+            <!-- Right Side Panel Toggle Button -->
+            <button class="navbar-toggler aside-menu-toggler" type="button">☰</button>
+        <?php endif; ?>
 
     </header>
 
     <div class="app-body">
         
-        <!-- Left Sidebar -->
-        <?php echo $__env->make('menus.left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php if(auth()->guard()->check()): ?>
+            <!-- Left Sidebar -->
+            <?php echo $__env->make('menus.left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endif; ?>
 
         <!-- Main content -->
         <main class="main">
 
             <!-- Breadcrumb Banner -->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <?php echo $__env->yieldContent('breadcrumb'); ?>
 
                 <!-- Breadcrumb Menu Banner-->
                 <!--<?php echo $__env->make('menus.banner', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>-->
@@ -101,8 +114,10 @@
             <!-- /.conainer-fluid -->
         </main>
 
-        <!-- Right Slide-In Menu Panel -->
-        <?php echo $__env->make('menus.right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php if(auth()->guard()->check()): ?>
+            <!-- Right Slide-In Menu Panel -->
+            <?php echo $__env->make('menus.right', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endif; ?>
 
     </div>
 

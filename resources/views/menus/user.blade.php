@@ -50,7 +50,14 @@
             <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
             <div class="divider"></div>
             <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
-            <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+            <a class="dropdown-item" 
+               href="{{ route('logout') }}" 
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fa fa-lock"></i> Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </div>
     </li>
 </ul>
