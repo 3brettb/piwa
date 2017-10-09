@@ -148,6 +148,18 @@
     <!-- Custom scripts required by this view -->
     <script src="js/views/main.js"></script>
 
+    <?php echo $__env->yieldPushContent('js'); ?>
+
+    <script>
+
+        $(document).on('ready', function(){
+
+            <?php echo $__env->yieldPushContent('on_ready'); ?>
+
+        });
+
+    </script>
+
 </body>
 
 </html>

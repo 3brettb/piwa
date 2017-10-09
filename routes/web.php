@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return redirect("/home");
+    return redirect("/dashboard");
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::resource('/project', 'ProjectController');
+
+Route::resource('/tag', 'TagController');

@@ -148,6 +148,18 @@
     <!-- Custom scripts required by this view -->
     <script src="js/views/main.js"></script>
 
+    @stack('js')
+
+    <script>
+
+        $(document).on('ready', function(){
+
+            @stack('on_ready')
+
+        });
+
+    </script>
+
 </body>
 
 </html>

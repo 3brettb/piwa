@@ -13,3 +13,41 @@
 .sidebar-minimized .nav-text {
     display: none;
 }
+
+.thin .page-link, .thin.pagination-datatables li a, .thin.pagination li a {
+    line-height: 0.25;
+    font-size: 12px;
+}
+
+.project-content {
+    display: none;
+    padding: 5px 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 2px;
+}
+
+.tag > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tag-default {
+    background-color: #8D8D8D;
+    color: #000;
+}
+
+.tag-blue {
+    background-color: #2F00EC;
+    color: #fff;
+}

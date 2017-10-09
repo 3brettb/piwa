@@ -2,10 +2,10 @@
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard</a>
+                <a class="nav-link" href="{{ route('dashboard') }}"><i class="icon-speedometer"></i> Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html"><i class="icon-organization"></i> Project Index</a>
+                <a class="nav-link" href="{{ route('project.index') }}"><i class="icon-organization"></i> Project Index</a>
             </li>
 
             {{--  <li class="divider"></li>

@@ -19,6 +19,11 @@ class Project extends Model
         'name', 'description', 'user_id', 'start_date', 'end_date',
     ];
     
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,6 +42,23 @@ class Project extends Model
     public function watchers()
     {
         return $this->morphMany(Watcher::class, 'watchable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function getBeginDateAttribute()
+    {
+        if($this->start_date) return $this->start_date->toFormattedDateString();
+        else return "No Start Date";
+    }
+
+    public function getDueDateAttribute()
+    {
+        if($this->end_date) return $this->end_date->toFormattedDateString();
+        else return "No Due Date";
     }
 
 }

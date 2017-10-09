@@ -16,7 +16,7 @@
 
                             
                             <div class="input-group mb-3">
-                                <span class="input-group-addon"><i class="icon-user"></i></span>            
+                                <span class="input-group-addon">@</span>          
                                 <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="<?php echo e(old('email')); ?>" required autofocus>
                             </div>
                             <div class="form-group<?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
