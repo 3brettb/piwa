@@ -1,8 +1,4 @@
-/storage/*.key
-/storage/*
 .env
 node_modules/
 .idea/
-storage/framework/views/
-storage/logs/
 .vscode/
