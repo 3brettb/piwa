@@ -16,7 +16,7 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'user_id', 'start_date', 'end_date',
+        'name', 'abbr', 'description', 'user_id', 'start_date', 'end_date',
     ];
     
     protected $casts = [
@@ -49,6 +49,21 @@ class Project extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'project_users', 'project_id', 'user_id');
+    }
+
     public function getBeginDateAttribute()
     {
         if($this->start_date) return $this->start_date->toFormattedDateString();
@@ -59,6 +74,31 @@ class Project extends Model
     {
         if($this->end_date) return $this->end_date->toFormattedDateString();
         else return "No Due Date";
+    }
+
+    public function getSubmittedTasksAttribute()
+    {
+        return $this->tasks->where('status_id', 1);
+    }
+    
+    public function getOpenTasksAttribute()
+    {
+        return $this->tasks->where('status_id', 2);
+    }
+    
+    public function getProgressTasksAttribute()
+    {
+        return $this->tasks->where('status_id', 3);
+    }
+    
+    public function getReviewTasksAttribute()
+    {
+        return $this->tasks->where('status_id', 4);
+    }
+    
+    public function getClosedTasksAttribute()
+    {
+        return $this->tasks->where('status_id', 5);
     }
 
 }

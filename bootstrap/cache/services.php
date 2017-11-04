@@ -25,11 +25,12 @@
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     23 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    24 => 'App\\Providers\\AppServiceProvider',
-    25 => 'App\\Providers\\AuthServiceProvider',
-    26 => 'App\\Providers\\EventServiceProvider',
-    27 => 'App\\Providers\\RouteServiceProvider',
-    28 => 'App\\Providers\\ComposerServiceProvider',
+    24 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    25 => 'App\\Providers\\AppServiceProvider',
+    26 => 'App\\Providers\\AuthServiceProvider',
+    27 => 'App\\Providers\\EventServiceProvider',
+    28 => 'App\\Providers\\RouteServiceProvider',
+    29 => 'App\\Providers\\ComposerServiceProvider',
   ),
   'eager' => 
   array (
@@ -149,6 +150,8 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'command.ide-helper.generate' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    'command.ide-helper.models' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
   ),
   'when' => 
   array (
@@ -189,6 +192,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => 
     array (
     ),
   ),

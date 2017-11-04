@@ -15,16 +15,16 @@
     <meta name="description" content="PIWA - Project and Issue Management Web Application">
     <meta name="author" content="Brett Brist">
     <meta name="keyword" content="Project,Project Management,Issue,Issue Tracking,PIWA,Project Issue,Project Issue Web App">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="{{ URL::asset('img/favicon.png') }}">
     <title>PIWA - Project Management</title>
 
     <!-- Icons -->
-    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="vendors/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
 
     <!-- Main styles for this application -->
-    <link href="css/coreui.css" rel="stylesheet">
-    <link href="css/piwa.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/coreui.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/piwa.css') }}" rel="stylesheet">
 </head>
 
 <!-- BODY options, add following classes to body to change options
@@ -128,25 +128,25 @@
     </footer>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendors/pace-progress/pace.min.js"></script>
+    <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/pace-progress/pace.min.js') }}"></script>
 
 
     <!-- Plugins and scripts required by all views -->
-    <script src="vendors/chart.js/dist/Chart.min.js"></script>
+    <!--<script src="{{ URL::asset('vendors/chart.js/dist/Chart.min.js') }}"></script>-->
 
 
     <!-- GenesisUI main scripts -->
 
-    <script src="js/coreui.js"></script>
+    <script src="{{ URL::asset('js/coreui.js') }}"></script>
 
 
     <!-- Plugins and scripts required by this views -->
 
     <!-- Custom scripts required by this view -->
-    <script src="js/views/main.js"></script>
+    <!--<script src="{{ URL::asset('js/views/main.js') }}"></script>-->
 
     @stack('js')
 

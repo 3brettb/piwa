@@ -19,6 +19,13 @@ class Comment extends Model
         'content', 'user_id', 'commentable_id', 'commentable_type',
     ];
     
+    public static function boot()
+    {
+        static::creating(function($model){
+            $model->user_id = auth()->user()->id;
+        });
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);

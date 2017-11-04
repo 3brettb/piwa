@@ -16,6 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // View Dependancies
         include_once('ComposerDependancies/Project.php');
+        include_once('ComposerDependancies/Task.php');
     }
 
     /**

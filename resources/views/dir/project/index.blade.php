@@ -46,7 +46,7 @@
                     <i class="icon-doc"></i> Project
                 </div>
                 <div class="card-body">
-                    <span class="project-content filler" style="font-style:italic">Select a project on the right</span>   
+                    <span class="project-content-filler" style="font-style:italic">Select a project on the left</span>   
 
                     @foreach($projects as $project)
                         <div class="project-content" style="display:none" id="project-{{$project->id}}">
@@ -85,9 +85,11 @@
             for(i=0; i<content.length; i++){
                 content[i].style.display = "none";
             }
+            document.getElementsByClassName("project-content-filler")[0].style.display = "none";
 
             document.getElementById(project).style.display = "block";
         }
 
     </script>
 @endpush
+                    

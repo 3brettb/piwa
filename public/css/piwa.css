@@ -22,6 +22,18 @@
 .project-content {
     display: none;
     padding: 5px 10px;
+    animation: fadeEffect 1s;
+    -webkit-animation: fadeEffect 1s;
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 .tag {
@@ -50,4 +62,8 @@
 .tag-blue {
     background-color: #2F00EC;
     color: #fff;
+}
+
+.card .no-padding {
+    padding: 0 !important;
 }
