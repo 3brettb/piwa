@@ -26,11 +26,12 @@
     22 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     23 => 'Laravel\\Tinker\\TinkerServiceProvider',
     24 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
-    25 => 'App\\Providers\\AppServiceProvider',
-    26 => 'App\\Providers\\AuthServiceProvider',
-    27 => 'App\\Providers\\EventServiceProvider',
-    28 => 'App\\Providers\\RouteServiceProvider',
-    29 => 'App\\Providers\\ComposerServiceProvider',
+    25 => 'Collective\\Html\\HtmlServiceProvider',
+    26 => 'App\\Providers\\AppServiceProvider',
+    27 => 'App\\Providers\\AuthServiceProvider',
+    28 => 'App\\Providers\\EventServiceProvider',
+    29 => 'App\\Providers\\RouteServiceProvider',
+    30 => 'App\\Providers\\ComposerServiceProvider',
   ),
   'eager' => 
   array (
@@ -152,6 +153,10 @@
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
     'command.ide-helper.generate' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
     'command.ide-helper.models' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -195,6 +200,9 @@
     array (
     ),
     'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),
