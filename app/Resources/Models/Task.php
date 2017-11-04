@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Resources;
+namespace App\Resources\Models;
 
 use App\Models\Priority;
 use App\Models\Status;

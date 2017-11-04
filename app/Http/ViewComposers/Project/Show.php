@@ -3,24 +3,20 @@
 namespace App\Http\ViewComposers\Project;
 
 use Illuminate\View\View;
+use App\Resources\Models\Project as ProjectResource;
 use App\Models\Project;
 
-class Index
+class Show
 {
-    /**
-     * The user projects
-     *
-     * @var Project[]
-     */
-    protected $projects;
 
     /**
      * Create a new project index composer.
+     *
+     * @param Project $project
      */
-    public function __construct()
+    public function __construct(Project $project)
     {
         // Dependencies automatically resolved by service container...
-        $this->projects = auth()->user()->projects()->paginate(10);
     }
 
     /**
@@ -31,6 +27,6 @@ class Index
      */
     public function compose(View $view)
     {
-        $view->with('projects', $this->projects);
+        $view->with('recent_tasks', ProjectResource::RecentTasks($view->project, 10));
     }
 }

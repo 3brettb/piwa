@@ -9,68 +9,94 @@
 @section('content')
 
     <div class="row">
-        <h2>{{$project->name}}</h2>
-    </div>
-
-    <div class="row">
         @include('dir.project.partials.show-task-status', ['project' => $project])  
     </div>
 
     <div class="row">
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-4">
+
             <div class="card">
                 <div class="card-header">
-                    <i class="icon-layers"></i>Tasks
-                    <span class="float-right"><a href="{{ route('task.create', $project) }}">Create new task</a></span>
+                    <i class="icon-info"></i>Project Info
                 </div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
-                    ea commodo consequat.
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Project Name</div>
+                        <div class="col-sm-8 text-muted">{{$project->name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Project Description</div>
+                        <div class="col-sm-8 text-muted">{{$project->description}}</div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Date Started</div>
+                        <div class="col-sm-8 text-muted">
+                            {{
+                                isset($project->end_date) ?
+                                    $project->start_date->format(DateFormats::$STANDARD_DATE_LONG) :
+                                    $project->created_at->format(DateFormats::$STANDARD_DATE_LONG)
+                            }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Date Due</div>
+                        <div class="col-sm-8 text-muted">{{isset($project->end_date) ? $project->end_date->format(DateFormats::$STANDARD_DATETIME_LONG) : "None"}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 font-weight-bold">Users on Project</div>
+                        <div class="col-sm-8 text-muted">{{$project->users->count()}}</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4">
             <div class="card">
                 <div class="card-header">
                     <i class="icon-people"></i>Users
                     <span class="float-right"><a href="#">Add User</a></span>
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-sm">
                         <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Added</th>
-                            </tr>
+                        <tr>
+                            <th>User</th>
+                            <th>Added</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($project->users as $user)
-                                <tr>
-                                    <td>{{$user->fullname}}</td>
-                                    <td>Added Date</td>
-                                </tr>
-                            @endforeach
+                        @foreach($project->users as $user)
+                            <tr>
+                                <td>{{$user->fullname}}</td>
+                                @if($user->pivot->accepted == 1)
+                                    <td>{{$user->pivot->created_at->format(DateFormats::$STANDARD_DATE_LONG)}}</td>
+                                @else
+                                    <td>Awaiting Acceptance</td>
+                                @endif
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-8">
+
             <div class="card">
                 <div class="card-header">
-                    <i class="icon-info"></i>Project Info
+                    <i class="icon-layers"></i>Recent Tasks
+                    <span class="float-right"><a href="{{ route('task.create', $project) }}">Create new task</a></span>
                 </div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex
-                    ea commodo consequat.
+                    @include('res.lists.tasks', ['tasks' => $recent_tasks])
+                </div>
+                <div class="card-footer">
+                    <a href="{{route('task.index', $project)}}">View All Project Tasks</a>
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4">
             <div class="card">
                 <div class="card-header">
                     <i class="icon-info"></i>Comments
@@ -82,6 +108,7 @@
                     @include('res.forms.comment-create', ['action' => route('project.comment', $project)])
                 </div>
             </div>
+
         </div>
 
     </div>
