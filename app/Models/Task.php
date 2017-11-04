@@ -39,7 +39,7 @@ class Task extends Model
     {
         static::creating(function($model){
             $num = Task::where('project_id', $model->project_id)->count() + 1;
-            $model->pid = "$model->short-$num";
+            $model->pid = $model->project->abbr."-".$num;
         });
     }
     

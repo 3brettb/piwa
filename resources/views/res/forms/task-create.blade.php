@@ -25,6 +25,33 @@
         @endif
     </div>
 
+    <div class="row mb-4">
+
+        <div class="input-group col-sm-6">
+            {!! Form::select('priority', $priorities_list, null, ['placeholder' => 'Task Priority', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
+            @if ($errors->has('priority'))
+                <span class="help-block">
+                <strong>{{ $errors->first('priority') }}</strong>
+            </span>
+            @endif
+        </div>
+
+        <div class="input-group col-sm-6">
+            {!! Form::select('type', $types_list, null, ['placeholder' => 'Task Type', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+            @if ($errors->has('type'))
+                <span class="help-block">
+                <strong>{{ $errors->first('type') }}</strong>
+            </span>
+            @endif
+        </div>
+
+    </div>
+
+
     <div class="row align-items-center">
         <div class="col-10">
             <button type="submit" class="btn btn-primary px-4">Create Task</button>

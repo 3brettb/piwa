@@ -10,7 +10,7 @@ class ProjectController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return \App\Http\Controllers\ProjectController
+     * @return ProjectController
      */
     public function __construct()
     {

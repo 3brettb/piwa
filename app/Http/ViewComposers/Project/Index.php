@@ -9,17 +9,14 @@ use App\Models\Project;
 class Index
 {
     /**
-     * The user repository implementation.
+     * The user projects
      *
-     * @var UserRepository
+     * @var Project[]
      */
     protected $projects;
 
     /**
-     * Create a new profile composer.
-     *
-     * @param  UserRepository  $users
-     * @return void
+     * Create a new project index composer.
      */
     public function __construct()
     {

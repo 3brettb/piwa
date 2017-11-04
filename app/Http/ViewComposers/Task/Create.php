@@ -4,20 +4,25 @@ namespace App\Http\ViewComposers\Task;
 
 use Illuminate\View\View;
 use App\Models\Project;
+use App\Resources\Task as TaskResource;
 
 class Create
 {
 
+    private $priorities;
+
+    private $types;
+
     /**
-     * Create a new profile composer.
+     * Create a new task create composer.
      *
-     * @param  UserRepository  $users
-     * @return void
+     * @param Project $project
      */
-    public function __construct()
+    public function __construct(Project $project)
     {
         // Dependencies automatically resolved by service container...
-        
+        $this->priorities = TaskResource::PrioritiesList();
+        $this->types = TaskResource::TypesList();
     }
 
     /**
@@ -28,6 +33,7 @@ class Create
      */
     public function compose(View $view)
     {
-        
+        $view->with('priorities_list', $this->priorities)
+             ->with('types_list', $this->types);
     }
 }

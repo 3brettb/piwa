@@ -32,6 +32,7 @@
     28 => 'App\\Providers\\EventServiceProvider',
     29 => 'App\\Providers\\RouteServiceProvider',
     30 => 'App\\Providers\\ComposerServiceProvider',
+    31 => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'eager' => 
   array (
