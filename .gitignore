@@ -2,3 +2,9 @@
 node_modules/
 .idea/
 .vscode/
+vendor/symfony/
+vendor/barryvdh/
+vendor/composer/
+composer.lock
+composer.json
+composer.phar
