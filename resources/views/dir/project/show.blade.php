@@ -19,6 +19,7 @@
             <div class="card">
                 <div class="card-header">
                     <i class="icon-info"></i>Project Info
+                    <span class="float-right"><a href="{{ route('project.edit', $project) }}">Edit Info</a></span>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -54,7 +55,7 @@
             <div class="card">
                 <div class="card-header">
                     <i class="icon-people"></i>Users
-                    <span class="float-right"><a href="#">Add User</a></span>
+                    <span class="float-right"><a href="{{ route('project.users', $project) }}">Manage Users</a></span>
                 </div>
                 <div class="card-body">
                     <table class="table table-sm">
@@ -99,10 +100,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    <i class="icon-info"></i>Comments
+                    <i class="icon-info"></i>Recent Comments
+                    <span class="float-right"><a href="{{ route('project.comments', $project) }}">View All Comments</a></span>
                 </div>
-                <div class="card-body">
-                    @include('res.lists.comments', ['comments' => $project->comments])
+                <div class="card-body" style="margin: -20px;">
+                    @include('res.lists.comments', ['comments' => $recent_comments])
                 </div>
                 <div class="card-footer no-padding">
                     @include('res.forms.comment-create', ['action' => route('project.comment', $project)])

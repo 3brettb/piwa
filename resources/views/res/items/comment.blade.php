@@ -9,3 +9,4 @@
             <div class="comment-content clearfix">{!! nl2br($comment->content) !!}</div>
         </div>
     </li>
+    <hr class="comment-divider"/>

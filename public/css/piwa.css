@@ -79,45 +79,78 @@ ul.comments {
     margin-bottom: 0;
 }
 
-.comment .comment-date, .comment .comment-user {
+.comments .comment .comment-date,
+.comments .comment .comment-user {
     font-weight: bold;
 }
 
 .comments > .comment {
     padding: 5px 15px 8px 15px;
-    margin-bottom: 10px;
 }
 
-.comment .comment-content {
+.comments .comment .comment-content {
     clear: both;
 }
 
-.comment.left {
+.comments .comment.left {
+    background: white;
+    color: #0d5169;
+}
+
+.comments .comment .comment-date {
+    float: right;
+}
+
+.comments .comment .comment-user,
+.comments .comment .comment-content {
+    float: left;
+}
+
+.comments .comment.right {
+    background: #eef2f3;
+    color: #262a2c;
+}
+
+.comments .comment-divider {
+    margin: 0;
+}
+
+.comments.bubble > .comment {
+    margin-bottom: 10px;
+}
+
+.comments.bubble .comment.left {
     background: #e4e5e6;
     border-radius: 10px 10px 10px 0px;
     margin-right: 15%;
     color: #0d5169;
 }
 
-.comment.left .comment-date {
+.comments.bubble .comment.left .comment-date {
     float: right;
 }
 
-.comment.left .comment-user, .comment.left .comment-content {
+.comments.bubble .comment.left .comment-user,
+.comments.bubble .comment.left .comment-content {
     float: left;
 }
 
-.comment.right {
+.comments.bubble .comment.right {
     background: #20a8d8;
     border-radius: 10px 10px 0px 10px;
     margin-left: 15%;
     color: #e4f1f5;
 }
 
-.comment.right .comment-date {
+.comments.bubble .comment.right .comment-date {
     float: left;
 }
 
-.comment.right .comment-user, .comment.right .comment-content {
+.comments.bubble .comment.right .comment-user,
+.comments.bubble .comment.right .comment-content {
     float: right;
+}
+
+.comments.bubble .comment-divider {
+    display: none;
 }

@@ -28,5 +28,6 @@ class Show
     public function compose(View $view)
     {
         $view->with('recent_tasks', ProjectResource::RecentTasks($view->project, 10));
+        $view->with('recent_comments', ProjectResource::RecentComments($view->project, 5));
     }
 }

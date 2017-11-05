@@ -12,4 +12,13 @@ class Project
         return $project->tasks()->orderBy('updated_at', 'DESC')->limit($num)->get();
     }
 
+    public static function RecentComments(ProjectModel $project, $num = 5)
+    {
+        return $project->comments()
+                       ->orderBy('updated_at', 'DESC')
+                       ->limit($num)
+                       ->get()
+                       ->reverse();
+    }
+
 }
