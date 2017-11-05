@@ -6,6 +6,6 @@
         <div class="clearfix">
             <span class="comment-user">{{$comment->user->full_name}}</span>
             <span class="comment-date">{{$comment->created_at->diffForHumans()}}</span>
-            <div class="comment-content clearfix">{{$comment->content}}</div>
+            <div class="comment-content clearfix">{!! nl2br($comment->content) !!}</div>
         </div>
     </li>

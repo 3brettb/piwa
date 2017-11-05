@@ -15,6 +15,4 @@ class DateFormats
 
     public static $STANDARD_DATETIME_LONG = "M j, Y h:i:s A";
 
-    public static $TIMEAGO = "time ago";
-
 }
