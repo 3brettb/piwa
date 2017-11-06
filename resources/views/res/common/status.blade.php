@@ -1,0 +1,1 @@
+<span class="status {{$status->class or 'default'}}">{{$status->name}}</span>

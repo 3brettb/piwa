@@ -154,3 +154,19 @@ ul.comments {
 .comments.bubble .comment-divider {
     display: none;
 }
+
+.priority.priority-none {
+    color: #979ba3;
+}
+.priority.priority-low {
+    color: #ebde18;
+}
+.priority.priority-high {
+    color: #ed7429;
+}
+.priority.priority-urgent {
+    color: #ed2929;
+}
+.priority.priority-critical {
+    color: #9b1010;
+}

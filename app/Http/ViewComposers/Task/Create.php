@@ -4,7 +4,7 @@ namespace App\Http\ViewComposers\Task;
 
 use Illuminate\View\View;
 use App\Models\Project;
-use App\Resources\Task as TaskResource;
+use App\Resources\Models\Task as TaskResource;
 
 class Create
 {

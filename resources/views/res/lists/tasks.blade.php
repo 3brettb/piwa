@@ -1,3 +1,3 @@
 <ul class="tasks">
-    @each('res.items.task', $tasks, 'task', 'res.items.task-none')
+    @each('res.items.list.task', $tasks, 'task', 'res.items.empty.li-task')
 </ul>

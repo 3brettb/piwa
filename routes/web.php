@@ -31,3 +31,5 @@ Route::post('/project/{project}/comment', 'ProjectController@comment')->name('pr
 Route::get('/project/{project}/users', 'ProjectController@users')->name('project.users');
 Route::post('/project/{project}/users', 'ProjectController@add_user')->name('project.user.add');
 Route::delete('/project/{project}/users', 'ProjectController@remove_user')->name('project.user.remove');
+
+Route::get('/user/{user}', 'UserController@show')->name('user.show');

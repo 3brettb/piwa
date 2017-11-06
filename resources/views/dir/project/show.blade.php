@@ -91,7 +91,7 @@
                     <span class="float-right"><a href="{{ route('task.create', $project) }}">Create new task</a></span>
                 </div>
                 <div class="card-body">
-                    @include('res.lists.tasks', ['tasks' => $recent_tasks])
+                    @include('res.tables.tasks', ['tasks' => $recent_tasks])
                 </div>
                 <div class="card-footer">
                     <a href="{{route('task.index', $project)}}">View All Project Tasks</a>
