@@ -1,1 +1,3 @@
-<tr class="task">There are no tasks</tr>
+<tr class="task">
+    <td>There are no tasks</td>
+</tr>
