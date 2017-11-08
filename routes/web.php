@@ -23,6 +23,7 @@ Route::resource('/project', 'ProjectController');
 
 Route::resource('/tag', 'TagController');
 
+Route::get('/project/{project}/tasks', 'TaskController@index')->name('project.tasks');
 Route::resource('/project/{project}/task', 'TaskController');
 
 Route::get('/project/{project}/comments', 'ProjectController@comments')->name('project.comments');

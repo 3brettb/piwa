@@ -19,9 +19,30 @@ class TaskController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Task Index page for a project
+     *
+     * @param Project $project
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Project $project)
+    {
+        return  view('dir.task.index', [
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * Create a new Task
+     *
+     * @param Project $project
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create(Project $project)
     {
-        return view('dir.task.create')->withProject($project);
+        return view('dir.task.create', [
+            'project' => $project
+        ]);
     }
 
     /**
@@ -33,25 +54,23 @@ class TaskController extends Controller
      */
     public function store(Project $project, Request $request)
     {
-        $project->tasks()->create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'status_id' => TaskResource::$DEFAULT_STATUS_ID,
-            'priority_id' => $request['priority'],
-            'type_id' => $request['type'],
-            'user_id' => auth()->user()->id,
-        ]);
+        TaskResource::Validate($request);
+        TaskResource::Create($request, $project, auth()->user());
         return redirect()->route('project.show', $project);
     }
 
     /**
      * Display a task
      *
+     * @param Project $project
      * @param Task $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(Project $project, Task $task)
     {
-        return view('dir.task.show')->withTask($task);
+        return view('dir.task.show', [
+            'project' => $project,
+            'task' => $task
+        ]);
     }
 }

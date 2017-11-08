@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-4 font-weight-bold">Project Description</div>
-                        <div class="col-sm-8 text-muted">{{$project->description}}</div>
+                        <div class="col-sm-8 text-muted">{!! nl2br($project->description) !!}</div>
                     </div>
                     <hr>
                     <div class="row">
@@ -94,7 +94,7 @@
                     @include('res.tables.tasks', ['tasks' => $recent_tasks])
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('task.index', $project)}}">View All Project Tasks</a>
+                    <a href="{{route('project.tasks', $project)}}">View All Project Tasks</a>
                 </div>
             </div>
 

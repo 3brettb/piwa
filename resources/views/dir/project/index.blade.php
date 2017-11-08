@@ -65,7 +65,7 @@
                     <i class="icon-plus"></i> New Project
                 </div>
                 <div class="card-body">
-                    @include('res.forms.project-create')
+                    @include('res.forms.project.create-quick')
                 </div>
             </div>
         </div>

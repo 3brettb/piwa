@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Resources\Models\Project as ProjectResource;
+use App\Resources\Models\Comment as CommentResource;
 
 class ProjectController extends Controller
 {
@@ -27,34 +29,80 @@ class ProjectController extends Controller
         return view('dir.project.index');
     }
 
+    /**
+     * Display the Create New Project Page
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('dir.project.create');
     }
 
+    /**
+     * Store a new project
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        auth()->user()->projects()->create([
-            "name" => $request['name'],
-            "description" => $request['description'],
-            'abbr' => strtoupper($request['abbr']),
-            "user_id" => auth()->user()->id
-        ], [
-            'accepted' => 1
-        ]);
+        ProjectResource::Validate($request);
+        ProjectResource::Create($request, auth()->user());
         return redirect()->route('project.index');
     }
 
-    public function show(Project $project)
+    /**
+     * Display the Edit Project Page
+     *
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Project $project)
     {
-        return view('dir.project.show')->withProject($project);
+        return view('dir.project.edit', [
+            'project' => $project
+        ]);
     }
 
+    /**
+     * Update a project
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Project $project, Request $request)
+    {
+        ProjectResource::Validate($request);
+        ProjectResource::Update($project, $request);
+        return redirect()->route('project.show', $project);
+    }
+
+    /**
+     * Display a project
+     *
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Project $project)
+    {
+        return view('dir.project.show', [
+            'project' => $project
+        ]);
+    }
+
+    /**
+     * Add a comment to a project
+     *
+     * @param Request $request
+     * @param Project $project
+     * @return \Illuminate\Http\Response
+     */
     public function comment(Request $request, Project $project)
     {
-        $project->comments()->create([
-            'content' => $request['content']
-        ]);
+        CommentResource::Validate($request);
+        ProjectResource::AddComment($project, $request);
         return redirect()->back();
     }
 }
