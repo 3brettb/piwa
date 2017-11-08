@@ -32,6 +32,20 @@ class Task
 
     /**
      * @param Request $request
+     */
+    public static function Validate(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'status' => 'required',
+            'priority' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+        ]);
+    }
+
+    /**
+     * @param Request $request
      * @param Project $project
      * @param User $user
      */
@@ -62,18 +76,14 @@ class Task
         ]);
     }
 
-    /**
-     * @param Request $request
-     */
-    public static function Validate(Request $request)
+    public static function Destroy(TaskModel $task)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-            'status_id' => 'required',
-            'priority_id' => 'required',
-            'type_id' => 'required',
-            'description' => 'required',
-        ]);
+        //$task->project()->dissociate();
+        // Handle dissassociation of subtasks
+        // Handle deletion of comments
+        // Handle deletion of taggables
+        // Handle deletion of attachments
+        //$task->delete();
     }
 
 }

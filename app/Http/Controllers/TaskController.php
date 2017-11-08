@@ -73,4 +73,36 @@ class TaskController extends Controller
             'task' => $task
         ]);
     }
+
+    /**
+     * @param Project $project
+     * @param Task $task
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Project $project, Task $task)
+    {
+        return view('dir.task.edit', [
+            'project' => $project,
+            'task' => $task
+        ]);
+    }
+
+    public function update(Project $project, Task $task, Request $request)
+    {
+        TaskResource::Validate($request);
+        TaskResource::Update($task, $request);
+        return redirect()->route('task.show', [$project, $task]);
+    }
+
+    /**
+     * @param Project $project
+     * @param Task $task
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Project $project, Task $task)
+    {
+        TaskResource::Destroy($task);
+        return redirect()->route('project.show', $project);
+    }
+
 }

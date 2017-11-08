@@ -10,6 +10,6 @@
 
 @section('content')
 
-
+    <a href="{{ route('task.edit', [$project, $task]) }}">Edit Task</a>
 
 @endsection

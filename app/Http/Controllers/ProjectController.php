@@ -92,6 +92,11 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function destroy(Project $project, Request $request)
+    {
+
+    }
+
     /**
      * Add a comment to a project
      *

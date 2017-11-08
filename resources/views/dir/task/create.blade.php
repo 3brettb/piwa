@@ -16,7 +16,7 @@
                     <i class="icon-plus"></i> Create Task
                 </div>
                 <div class="card-body">
-                    @include('res.forms.task-create')
+                    @include('res.forms.task.create-quick')
                 </div>
             </div>
         </div>

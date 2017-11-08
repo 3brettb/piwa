@@ -1,8 +1,8 @@
 <form class="form-horizontal" method="POST" action="{{ route('task.store', $project) }}">
     {{ csrf_field() }}
-    
+
     <div class="input-group mb-3">
-        <span class="input-group-addon"><i class="icon-pencil"></i></span>         
+        <span class="input-group-addon"><i class="icon-pencil"></i></span>
         <input id="name" type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required>
     </div>
     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
