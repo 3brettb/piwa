@@ -2,6 +2,7 @@
 
 namespace App\Resources\Models;
 
+use App\Resources\Traits\Taskable;
 use App\User;
 use App\Models\Task as TaskModel;
 use App\Models\Priority;
@@ -67,12 +68,15 @@ class Task
      */
     public static function Update(TaskModel $task, Request $request)
     {
+        $tasked = Taskable::RetrieveTaskable($request->input('assigned'));
         $task->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'status_id' => $request->input('status'),
             'priority_id' => $request->input('priority'),
             'type_id' => $request->input('type'),
+            'taskable_type' => $tasked->type,
+            'taskable_id' => $tasked->id,
         ]);
     }
 

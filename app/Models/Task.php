@@ -113,4 +113,16 @@ class Task extends Model
         return $this->morphMany(Watcher::class, 'watchable');
     }
 
+    public function getTaskedIdAttribute()
+    {
+        if($this->taskable_type == null)
+        {
+            return null;
+        }
+        else
+        {
+            return str_replace("\\", "_", $this->taskable_type) . "-" . $this->taskable_id;
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\ViewComposers\Task;
 use Illuminate\View\View;
 use App\Models\Project;
 use App\Resources\Models\Task as TaskResource;
+use App\Resources\Models\Project as ProjectResource;
 
 class Edit
 {
@@ -15,6 +16,8 @@ class Edit
 
     private $statuses;
 
+    private $taskables;
+
     /**
      * Create a new task create composer.
      *
@@ -22,10 +25,12 @@ class Edit
      */
     public function __construct(Project $project)
     {
+        $project = request()->route('project');
         // Dependencies automatically resolved by service container...
         $this->priorities = TaskResource::PrioritiesList();
         $this->statuses = TaskResource::StatusesList();
         $this->types = TaskResource::TypesList();
+        $this->taskables = ProjectResource::TaskableList($project);
     }
 
     /**
@@ -38,6 +43,7 @@ class Edit
     {
         $view->with('priorities_list', $this->priorities)
              ->with('statuses_list', $this->statuses)
-             ->with('types_list', $this->types);
+             ->with('types_list', $this->types)
+             ->with('taskable_list', $this->taskables);
     }
 }

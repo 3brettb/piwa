@@ -48,7 +48,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         ProjectResource::Validate($request);
-        ProjectResource::Create($request, auth()->user());
+        ProjectResource::Create($request, $request->user());
         return redirect()->route('project.index');
     }
 

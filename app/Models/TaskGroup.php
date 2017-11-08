@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Resources\Traits\Taskable;
 
 class TaskGroup extends Model
 {
+    use Taskable;
+
     protected $table = 'task_groups';
 
     /**
@@ -31,6 +34,16 @@ class TaskGroup extends Model
     public function teams()
     {
         return $this->morphedByMany(Team::class, 'taskable');
+    }
+
+    public function getTaskableNameAttribute()
+    {
+        return "Group: ".$this->name;
+    }
+
+    public function toString()
+    {
+        return $this->name;
     }
 
 }

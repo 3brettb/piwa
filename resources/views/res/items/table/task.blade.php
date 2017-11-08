@@ -17,7 +17,7 @@
         <a href="{{ route('user.show', $task->user) }}">{{$task->user->full_name}}</a>
     </td>
     <td>{{$task->created_at->format(DateFormats::$STANDARD_DATE_LONG)}}</td>
-    <td>{{($task->taskable) ? $task->taskable->toString() : 'Not Assigned'}}</td>
+    <td>{{($task->taskable) ? $task->taskable->taskable_display : 'Not Assigned'}}</td>
     <td>
         @include('res.common.status', ['status' => $task->status])
     </td>

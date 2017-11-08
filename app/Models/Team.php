@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Resources\Traits\Taskable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\User;
 
 class Team extends Model
 {
-    protected $table = 'statuses';
+    use Taskable;
+
+    protected $table = 'teams';
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +35,16 @@ class Team extends Model
     public function users()
     {
         return $this->hasManyThrough(User::class, TeamUser::class);
+    }
+
+    public function getTaskableNameAttribute()
+    {
+        return "Team: ".$this->name;
+    }
+
+    public function toString()
+    {
+        return $this->name;
     }
 
 }

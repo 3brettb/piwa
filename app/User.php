@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Activity;
 use App\Models\Comment;
 use App\Models\Project;
-use App\Models\ProjectUser;
+use App\Resources\Traits\Taskable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Taskable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +39,11 @@ class User extends Authenticatable
         });
     }
 
+    public function getFullnameAttribute()
+    {
+        return $this->firstname . " " . $this->lastname;
+    }
+
     public function activity()
     {
         return $this->hasMany(Activity::class);
@@ -47,11 +52,6 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-
-    public function getFullnameAttribute()
-    {
-        return $this->firstname . " " . $this->lastname;
     }
     
     public function owned_projects()
@@ -62,6 +62,16 @@ class User extends Authenticatable
     public function projects()
     {
         return $this->belongstoMany(Project::class, 'project_users', 'user_id', 'project_id');
+    }
+
+    public function getTaskableNameAttribute()
+    {
+        return "User: ".$this->fullname;
+    }
+
+    public function toString()
+    {
+        return $this->fullname;
     }
 
 }

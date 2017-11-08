@@ -32,44 +32,52 @@
         @endif
     </div>
 
-    <div class="row mb-4">
+    <div class="input-group mb-3">
+        <span class="input-group-addon">Assigned To</span>
+        {!! Form::select('assigned', $taskable_list, $task->tasked_id, ['placeholder' => 'Select', 'class' => 'form-control']) !!}
+    </div>
+    <div class="form-group{{ $errors->has('assigned') ? ' has-error' : '' }}">
+        @if ($errors->has('assigned'))
+            <span class="help-block">
+                <strong>{{ $errors->first('assigned') }}</strong>
+            </span>
+        @endif
+    </div>
 
-        <div class="input-group col-sm-4">
-            <label for="priority">Priority Level</label>
-            {!! Form::select('priority', $priorities_list, $task->priority_id, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
-            @if ($errors->has('priority'))
-                <span class="help-block">
+    <div class="input-group mb-3">
+        <span class="input-group-addon">Priority</span>
+        {!! Form::select('priority', $priorities_list, $task->priority_id, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
+        @if ($errors->has('priority'))
+            <span class="help-block">
                 <strong>{{ $errors->first('priority') }}</strong>
             </span>
-            @endif
-        </div>
+        @endif
+    </div>
 
-        <div class="input-group col-sm-4">
-            <label for="status">Current Status</label>
-            {!! Form::select('status', $statuses_list, $task->status_id, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
-            @if ($errors->has('priority'))
-                <span class="help-block">
+    <div class="input-group mb-3">
+        <span class="input-group-addon">Status</span>
+        {!! Form::select('status', $statuses_list, $task->status_id, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group{{ $errors->has('priority') ? ' has-error' : '' }}">
+        @if ($errors->has('priority'))
+            <span class="help-block">
                 <strong>{{ $errors->first('priority') }}</strong>
             </span>
-            @endif
-        </div>
+        @endif
+    </div>
 
-        <div class="input-group col-sm-4">
-            <label for="type">Task Type</label>
-            {!! Form::select('type', $types_list, $task->type_id, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-            @if ($errors->has('type'))
-                <span class="help-block">
+    <div class="input-group mb-3">
+        <span class="input-group-addon">Type</span>
+        {!! Form::select('type', $types_list, $task->type_id, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+        @if ($errors->has('type'))
+            <span class="help-block">
                 <strong>{{ $errors->first('type') }}</strong>
             </span>
-            @endif
-        </div>
-
+        @endif
     </div>
 
 

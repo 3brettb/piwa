@@ -65,6 +65,21 @@ class Project extends Model
                     ->withPivot(['created_at', 'accepted']);
     }
 
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    public function task_groups()
+    {
+        return $this->hasMany(TaskGroup::class);
+    }
+
+    public function getTaskableAttribute()
+    {
+        return collect($this->users)->merge($this->teams)->merge($this->task_groups);
+    }
+
     public function getBeginDateAttribute()
     {
         if($this->start_date) return $this->start_date->toFormattedDateString();

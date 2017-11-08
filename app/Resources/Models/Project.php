@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class Project
 {
 
+    public static function TaskableList(ProjectModel $project)
+    {
+        return $project->taskable->pluck('taskable_name', 'taskable_id');
+    }
+
     /**
      * @param ProjectModel $project
      * @param int $num

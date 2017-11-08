@@ -55,7 +55,7 @@ class TaskController extends Controller
     public function store(Project $project, Request $request)
     {
         TaskResource::Validate($request);
-        TaskResource::Create($request, $project, auth()->user());
+        TaskResource::Create($request, $project, $request->user());
         return redirect()->route('project.show', $project);
     }
 
