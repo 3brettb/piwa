@@ -14,3 +14,14 @@ function issetOr($check, $default, $return = null)
 {
     return ($return) ? isset($check) ? $check : $return : isset($check) ? $check : $default;
 }
+
+/**
+ * Return the request variable specified
+ *
+ * @param $name
+ * @return mixed
+ */
+function routeVar($name)
+{
+    return request()->route($name);
+}

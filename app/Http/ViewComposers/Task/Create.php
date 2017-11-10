@@ -2,11 +2,11 @@
 
 namespace App\Http\ViewComposers\Task;
 
+use App\Http\ViewComposers\ViewComposer;
 use Illuminate\View\View;
-use App\Models\Project;
 use App\Resources\Models\Task as TaskResource;
 
-class Create
+class Create extends ViewComposer
 {
 
     private $priorities;
@@ -15,10 +15,8 @@ class Create
 
     /**
      * Create a new task create composer.
-     *
-     * @param Project $project
      */
-    public function __construct(Project $project)
+    public function __construct()
     {
         // Dependencies automatically resolved by service container...
         $this->priorities = TaskResource::PrioritiesList();

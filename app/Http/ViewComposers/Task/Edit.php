@@ -2,13 +2,15 @@
 
 namespace App\Http\ViewComposers\Task;
 
+use App\Http\ViewComposers\ViewComposer;
 use Illuminate\View\View;
-use App\Models\Project;
 use App\Resources\Models\Task as TaskResource;
 use App\Resources\Models\Project as ProjectResource;
 
-class Edit
+class Edit extends ViewComposer
 {
+
+    private $project;
 
     private $priorities;
 
@@ -20,17 +22,15 @@ class Edit
 
     /**
      * Create a new task create composer.
-     *
-     * @param Project $project
      */
-    public function __construct(Project $project)
+    public function __construct()
     {
-        $project = request()->route('project');
         // Dependencies automatically resolved by service container...
+        $this->project = routeVar('project');
         $this->priorities = TaskResource::PrioritiesList();
         $this->statuses = TaskResource::StatusesList();
         $this->types = TaskResource::TypesList();
-        $this->taskables = ProjectResource::TaskableList($project);
+        $this->taskables = ProjectResource::TaskableList($this->project);
     }
 
     /**

@@ -14,9 +14,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // View Dependancies
-        include_once('ComposerDependancies/Project.php');
-        include_once('ComposerDependancies/Task.php');
+        // View Dependencies
+        include_once('ComposerDependencies/Project.php');
+        include_once('ComposerDependencies/Task.php');
+        include_once('ComposerDependencies/User.php');
     }
 
     /**

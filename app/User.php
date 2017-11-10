@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Activity;
 use App\Models\Comment;
 use App\Models\Project;
+use App\Models\Task;
 use App\Resources\Traits\Taskable;
 
 class User extends Authenticatable
@@ -57,6 +58,16 @@ class User extends Authenticatable
     public function owned_projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function opened_tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function assigned_tasks()
+    {
+        return $this->morphMany(Task::class, 'taskable');
     }
 
     public function projects()

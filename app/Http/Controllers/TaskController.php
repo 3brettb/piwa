@@ -23,7 +23,7 @@ class TaskController extends Controller
      * Task Index page for a project
      *
      * @param Project $project
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index(Project $project)
     {
@@ -36,7 +36,7 @@ class TaskController extends Controller
      * Create a new Task
      *
      * @param Project $project
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function create(Project $project)
     {
