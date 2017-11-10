@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->belongstoMany(Project::class, 'project_users', 'user_id', 'project_id');
     }
 
+    public function getTaskableUrlAttribute()
+    {
+        return route('user.show', $this);
+    }
+
     public function getTaskableNameAttribute()
     {
         return "User: ".$this->fullname;

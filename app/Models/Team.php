@@ -37,6 +37,11 @@ class Team extends Model
         return $this->hasManyThrough(User::class, TeamUser::class);
     }
 
+    public function getTaskableUrlAttribute()
+    {
+        return route('project.team', [$this->project, $this]);
+    }
+
     public function getTaskableNameAttribute()
     {
         return "Team: ".$this->name;

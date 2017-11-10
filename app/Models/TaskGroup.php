@@ -36,6 +36,11 @@ class TaskGroup extends Model
         return $this->morphedByMany(Team::class, 'taskable');
     }
 
+    public function getTaskableUrlAttribute()
+    {
+        return route('project.group', [$this->project, $this]);
+    }
+
     public function getTaskableNameAttribute()
     {
         return "Group: ".$this->name;

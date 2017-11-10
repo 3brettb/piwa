@@ -5,6 +5,8 @@ namespace App\Resources\Traits;
 trait Taskable
 {
 
+    abstract function getTaskableUrlAttribute();
+
     public function getTaskableDisplayAttribute()
     {
         return  $this->toString();
