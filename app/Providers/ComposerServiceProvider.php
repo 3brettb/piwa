@@ -18,6 +18,8 @@ class ComposerServiceProvider extends ServiceProvider
         include_once('ComposerDependencies/Project.php');
         include_once('ComposerDependencies/Task.php');
         include_once('ComposerDependencies/User.php');
+        include_once('ComposerDependencies/TaskGroup.php');
+        include_once('ComposerDependencies/Team.php');
     }
 
     /**

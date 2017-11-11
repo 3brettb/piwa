@@ -26,6 +26,12 @@ Route::resource('/tag', 'TagController');
 Route::get('/project/{project}/tasks', 'TaskController@index')->name('project.tasks');
 Route::resource('/project/{project}/task', 'TaskController');
 
+Route::get('/project/{project}/taskgroups', 'TaskGroupController@index')->name('project.taskgroups');
+Route::resource('/project/{project}/taskgroup', 'TaskGroupController');
+
+Route::get('/project/{project}/teams', 'TeamController@index')->name('project.teams');
+Route::resource('/project/{project}/team', 'TeamController');
+
 Route::get('/project/{project}/comments', 'ProjectController@comments')->name('project.comments');
 Route::post('/project/{project}/comment', 'ProjectController@comment')->name('project.comment');
 

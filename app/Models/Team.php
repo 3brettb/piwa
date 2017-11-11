@@ -37,6 +37,11 @@ class Team extends Model
         return $this->hasManyThrough(User::class, TeamUser::class);
     }
 
+    public function assigned_tasks()
+    {
+        return $this->morphMany(Task::class, 'taskable');
+    }
+
     public function getTaskableUrlAttribute()
     {
         return route('project.team', [$this->project, $this]);

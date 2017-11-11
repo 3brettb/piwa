@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers\User;
 
 use App\Http\ViewComposers\ViewComposer;
 use Illuminate\View\View;
+use App\Resources\Enums;
 
 class Show extends ViewComposer
 {
@@ -26,6 +27,12 @@ class Show extends ViewComposer
     private $assigned;
 
     /**
+     * Unresolved Tasks Assigned to this User and Resolved
+     * @var $assigned
+     */
+    private $resolved;
+
+    /**
      * Create a new task create composer.
      */
     public function __construct()
@@ -33,7 +40,8 @@ class Show extends ViewComposer
         // Dependencies automatically resolved by service container...
         $this->user = routeVar('user');
         $this->opened = $this->user->opened_tasks;
-        $this->assigned = $this->user->assigned_tasks;
+        $this->assigned = $this->user->assigned_tasks()->where('status_id', '<', Enums\Status::$RESOLVED)->get();
+        $this->resolved = $this->user->assigned_tasks()->where('status_id', Enums\Status::$RESOLVED)->get();
     }
 
     /**
@@ -45,7 +53,8 @@ class Show extends ViewComposer
     public function compose(View $view)
     {
         $view->with('opened_tasks', $this->opened)
-             ->with('assigned_tasks', $this->assigned);
+             ->with('assigned_tasks', $this->assigned)
+             ->with('resolved_tasks', $this->resolved);
     }
 
 }

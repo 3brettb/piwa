@@ -26,4 +26,13 @@
         </div>
     </div>
 
+    <div class="card">
+        <div class="card-header">
+            <i class="icon-envelope"></i>Assigned & Resolved Tasks
+        </div>
+        <div class="card-body">
+            @include('res.tables.tasks', ['tasks' => $resolved_tasks])
+        </div>
+    </div>
+
 @endsection
